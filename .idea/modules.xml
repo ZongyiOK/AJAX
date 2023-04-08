@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AJAX_Study.iml" filepath="$PROJECT_DIR$/AJAX_Study.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ajax/ajax.iml" filepath="$PROJECT_DIR$/ajax/ajax.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fastjson/fastjson.iml" filepath="$PROJECT_DIR$/fastjson/fastjson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pre_knowledge/pre_knowledge.iml" filepath="$PROJECT_DIR$/pre_knowledge/pre_knowledge.iml" />
+    </modules>
+  </component>
+</project>
