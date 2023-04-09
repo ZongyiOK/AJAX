@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json数据对象</title>
+</head>
+<body>
+<script type="text/javascript">
+  /*
+  * 在javascript语言中如何创建一个json对象呢？语法是什么？
+  *   var jsonobj = {
+  *     "属性名1" : 属性值,
+  *     "属性名2" : 属性值,
+  *     "属性名3" : 属性值,
+  *     "属性名4" : 属性值,
+  *     ...
+  * }
+  * 注意：属性值的数据类型随意
+  * */
+  var address = {
+    "city" : "北京",
+    "street" : "大兴区",
+    "ziecode" : "123456"
+  }
+  var user = {
+    "usercode" : 111,
+    "username" : "zhangsan",
+    "sex" : true,
+    "age" : 20,
+    "hobbby" : ["sport","music","smoke"],
+    "addr" : address
+  }
+
+  //访问json对象的属性
+  //第一种方式
+  console.log(user.usercode)
+  console.log(user.username)
+  console.log(user.sex)
+  console.log(user.age)
+
+  for(var i=0;i<user.hobbby.length;i++){
+    console.log(user.hobbby[i])
+  }
+
+  console.log(user.addr.city)
+  console.log(user.addr.street)
+  console.log(user.addr.ziecode)
+
+  //第二种方式
+  console.log(user["usercode"])
+  console.log(user["username"])
+  console.log(user["sex"]?"男":"女")
+  console.log(user["age"])
+</script>
+</body>
+</html>

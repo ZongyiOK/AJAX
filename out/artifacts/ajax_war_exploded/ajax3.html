@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发送ajax post请求</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  window.onload = function(){
+    document.getElementById("mybtn").onclick = function(){
+      //发送AJAX Post请求
+      //1.创建AJAX核心对象
+      var xhr = new XMLHttpRequest();
+      //2.注册回调函数
+      xhr.onreadystatechange = function (){
+        if (this.readyState == 4) {
+          if (this.status == 200) {
+            document.getElementById("mydiv").innerHTML = this.responseText
+          }else{
+            alert(this.status)
+          }
+        }
+      }
+      //3.开启通道
+      xhr.open("POST","/ajax/ajaxrequest3",true);
+
+      //4.发送请求
+      // 怎么模拟AJAX提交form表单呢？设置请求头的内容类型,不设置，则send中的数据不能发送到后端服务器，必须放在open之后
+      xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+      //放到send这个小括号中的数据，会自动在请求体中提交，即post提交到的数据不是嵌入在url中，而是在send的小括号中
+      //注意格式，遵循http协议
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      //send函数中的参数就是发送的数据，这个数据在"请求体中发送"
+      xhr.send("username="+username+"&password="+password);
+    }
+  }
+</script>
+
+用户名:<input type="text" id="username"><br>
+密码:<input type="password" id="password"><br>
+<button id="mybtn">发送AJAX Post请求</button><br>
+<div id="mydiv"></div>
+
+
+</body>
+</html>

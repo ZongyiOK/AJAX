@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>给点击绑定事件</title>
+</head>
+<body>
+<!--方式一绑定，当点击按钮后，执行函数sayHello()，显示hello javascript-->
+<script type="text/javascript">
+    function sayHello(){
+        alert("hello javascript");
+    }
+</script>
+<input type="button" value="hello" onclick="sayHello()">
+
+<!--方式二绑定-->
+<script type="text/javascript">
+    //页面加载完毕之后，给id="helloBtn"的元素绑定鼠标单击事件
+    //function是一个回调函数，在load事件发生之后才会执行，而load事件在页面加载玩之后才会执行
+    //即页面加载完毕，自动执行load事件，而后执行function回调函数，然后给id="helloBtn"的元素绑定事件，当click事件发生之后，执行回调函数，显示hello javascript
+    window.onload = function(){
+        var helloBtn = document.getElementById("helloBtn");
+        helloBtn.onclick = function(){
+            // alert("hello javascript2");
+            alert(this.value);//这个this是事件源对象，即helloBtn，即按钮元素(input这个元素)
+        }
+    }
+</script>
+<input type="button" value="hello2" id="helloBtn">
+</body>
+</html>

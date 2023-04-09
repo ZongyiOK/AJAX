@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发送ajax请求，显示学生列表</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  window.onload = function (){
+    document.getElementById("btn").onclick = function (){
+      var xhr = new XMLHttpRequest();
+     xhr.onreadystatechange = function (){
+       if(xhr.readyState==4){
+         if(xhr.status==200){
+           //document.getElementById("stutbody").innerHTML = xhr.responseText
+             //将响应回来的json格式字符串转换成json对象
+             var stulist = JSON.parse(this.responseText)//是一个数组，每一个数组是一个json对象，自身被转换为json对象
+             var html = ""
+             for(var i=0;i<stulist.length;i++){
+                 var stuJson = stulist[i];
+                 html += "<tr>"
+                 html += "<td>"+(i+1)+"</td>"
+                 html += "<td>"+stuJson.name+"</td>"
+                 html += "<td>"+stuJson.age+"</td>"
+                 html += "<td>"+stuJson.addr+"</td>"
+                 html += "</tr>"
+             }
+             document.getElementById("stutbody").innerHTML = html
+         }else{
+           alert(xhr.status)
+         }
+       }
+     }
+     xhr.open("GET","/ajax/ajaxrequest5?t="+new Date().getTime(),true);
+     xhr.send()
+    }
+  }
+
+</script>
+
+<input type="button" value="显示学员列表" id="btn"w>
+<table width="50%" border="1px">
+  <tr>
+    <th>序号</th>
+    <th>姓名</th>
+    <th>年龄</th>
+    <th>住址</th>
+  </tr>
+  <tbody id="stutbody">
+<!--      <tr>
+        <td>1</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>-->
+  </tbody>
+</table>
+</body>
+</html>
